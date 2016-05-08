@@ -1,0 +1,19 @@
+{
+  "version": "1.0.0-*",
+  "description": "Librarian.DbModel Class Library",
+  "authors": [ "Alexasha" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "frameworks": {
+    "dnx451": { },
+    "dnxcore50": {}
+  },
+  "dependencies": {
+    "EntityFramework.Commands": "7.0.0-rc1-final",
+    "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final"
+  },
+  "commands": {
+    "ef": "EntityFramework.Commands"
+  }
+}

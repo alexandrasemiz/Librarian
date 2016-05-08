@@ -1,0 +1,49 @@
+﻿@model List<Librarian.ViewModels.Library.LibraryViewModel>
+@{
+    ViewData["Title"] = "Библиотекарь";
+}
+
+<div ng-app="library">
+    <div ng-controller="libraryController as library">    
+       <div ng-hide="library.enterLibrary" style="background:url(/images/library.jpg) no-repeat;width: 100%;height: 37vw;">
+            @foreach (Librarian.ViewModels.Library.LibraryViewModel lib in Model)
+            {
+                <div>                               
+                    <a ng-click="library.selectLibrary('@lib.Id')" style="color: ivory;font-size:-webkit-xxx-large;">ВОЙТИ В БИБЛИОТЕКУ @lib.Name</a>                    
+                </div>
+            }
+       </div>
+        <div id="list-books" ng-show="library.enterLibrary" style="display:none;background:url(/images/table.jpg) no-repeat;width:100%;min-height: 37vw;">
+            <div>
+                @*<a ng-click="library.addBook()">Добавить книгу в библиотеку</a>*@<br>
+                <div ng-hide="library.newBookForm">
+                    <span>Название: </span><input type="text" ng-model="library.newBookName">
+                    <span>Автор: </span><input type="text" ng-model="library.newBookAuthor">
+                    <button ng-click="library.addNewBook(library.newBookName, library.newBookAuthor)">Добавляю</button>
+                </div>
+            </div>             
+            <ul style="color:beige;font-size: larger;">            
+                <li ng-repeat="book in library.books" >
+                <a ng-click="library.takeBook(book.Id)" style="color:beige"><span ng-bind="book.Author+'   '+book.Name"></span></a>                
+                <a ng-click="library.returnBook(book.Id)" style="color:beige" ng-hide="book.IsInLibrary"><span>Вернуть книгу</span></a>                
+                <span id="" ng-bind="library.message" style="color:beige"></span><br>
+                <div ng-show="library.showRating">
+                    <div>
+                        <span>Насколько понравилась? </span>
+                        <select ng-model="library.ratingMark" style="color: darkred;">
+                            <option ng-repeat="rating in library.arrRating" value="{{rating}}">{{rating}}</option>
+                        </select>                        
+                    </div>
+                    <div>
+                        <span>Оставьте комментарий: </span>
+                        <input type="text" ng-model="library.ratingComment" style="color: darkred;">
+                        <button ng-click="library.putRating(book.Id, library.ratingMark, library.ratingComment)" style="color: darkred;">Оцениваю</button>
+                    </div>
+                </div>
+            </li>            
+        </ul>
+        </div>
+    </div>    
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+<script type="text/javascript" src="~/js/library.js"></script>
