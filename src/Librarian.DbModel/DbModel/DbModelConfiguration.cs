@@ -10,7 +10,8 @@ namespace Librarian.DbModel.DbModel
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("data source=ALEXASHA-PK;user id=sa;password=123456;initial catalog=Librarian");
+            //optionsBuilder.UseSqlServer("data source=ALEXASHA-PK;user id=sa;password=123456;initial catalog=Librarian");
+            optionsBuilder.UseSqlServer("data source = 37.228.91.148,1433;user id = sa;password = Ansivman7182;initial catalog = Librarian;");            
         }
         public DbSet<Book> Books { get; set; }
         public DbSet<Library> Libraries { get; set; }
