@@ -57,7 +57,7 @@ namespace Librarian.Controllers
             {
                 return Json(new { Success = false, Message = "Книга в библиотеке." });
             }
-            return Json(new { Success = true, Message = "Спасибо, что вернули книгу." });            
+            return Json(new { Success = true, Message = "Спасибо, что вернули книгу.", BookId = result.BookId, BookName = result.BookName, BookAuthor = result.BookAuthor });            
         }
         [HttpPost]
         [Authorize]
@@ -82,6 +82,18 @@ namespace Librarian.Controllers
             if (result.Success == true)
                 return Json(new { Success = true, Message = "Спасибо за новую книгу!" });
             return Json(new { Success = false, Message = "Не удалось добавить книгу." });
+        }
+        [HttpPost]
+        [Authorize]
+        public IActionResult GetRating(string bookId)
+        {
+            string userName = HttpContext.User.Identity.Name;
+            BookRatingViewModel result = _bookService.GetRating(bookId, userName);
+            if (result.UserNotFound == true) return HttpNotFound();
+            if (result.BookNotFound == true) return HttpNotFound();
+            if (result.NoRating) return Json(new { Success = false, Message="По данной книге нет отзывов." });
+            return Json(new { Success = true, Data=result });
+            
         }
     }
 }

@@ -13,5 +13,6 @@ namespace Librarian.Services.Declarations
         BookReturnViewModel Return(string bookId, string userName);
         BookEstimateViewModel Estimate(string bookId, string userName, string ratingMark="", string ratingComment="");
         BookAddViewModel Add(string bookName, string bookAuthor, string userName);
+        BookRatingViewModel GetRating(string bookId, string userName);
     }
 }
