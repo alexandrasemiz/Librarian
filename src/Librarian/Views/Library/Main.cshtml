@@ -3,8 +3,10 @@
     ViewData["Title"] = "Библиотекарь";
 }
 
+
+
 <div ng-app="library">
-    <div ng-controller="libraryController as library">    
+    <div ng-controller="libraryController  as library">    
        <div ng-hide="library.enterLibrary" style="background:url(/images/library.jpg) no-repeat;width: 100%;height: 37vw;">
             @foreach (Librarian.ViewModels.Library.LibraryViewModel lib in Model)
             {
@@ -72,6 +74,5 @@
             </div>
     </div>    
     </div>
+    
 </div>
-<script src="~/lib/angular/dist/js/angular.min.js"></script>
-<script type="text/javascript" src="~/js/library.js"></script>
