@@ -67,7 +67,7 @@ namespace Librarian.Controllers
                 if (result.Succeeded)
                 {
                     _logger.LogInformation(1, "User logged in.");
-                    return RedirectToAction("Main", "Library");
+                    return RedirectToAction(nameof(LibraryController.Main), "Library");
                 }
                 if (result.RequiresTwoFactor)
                 {
@@ -120,7 +120,7 @@ namespace Librarian.Controllers
                     //    "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation(3, "User created a new account with password.");
-                    return RedirectToAction("Main", "Library");
+                    return RedirectToAction(nameof(LibraryController.Main), "Library");
                 }
                 AddErrors(result);
             }
@@ -462,7 +462,7 @@ namespace Librarian.Controllers
             }
             else
             {
-                return RedirectToAction("Main", "Library");
+                return RedirectToAction(nameof(LibraryController.Main), "Library");
             }
         }
 

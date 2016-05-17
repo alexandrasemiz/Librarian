@@ -36,7 +36,7 @@
 
         <environment names="Development">
             <script src="~/lib/jquery/dist/jquery.js"></script>
-            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>            
             <script src="~/js/site.js" asp-append-version="true"></script>
         </environment>
         <environment names="Staging,Production">
@@ -48,6 +48,9 @@
                     asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
                     asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
             </script>
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js" 
+                    asp-fallback-src="~/lib/angular/dist/js/angular.min.js"></script>
+            <script type="text/javascript" src="~/js/library.js"></script>
             <script src="~/js/site.min.js" asp-append-version="true"></script>
         </environment>
 
